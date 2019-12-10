@@ -5,6 +5,7 @@ class CashRegister
     @total = 0
     @discount = discount
     @items = []
+    @last_transaction = {}
   end
   
   def add_item(title, price, quantity = 1)
@@ -13,6 +14,9 @@ class CashRegister
       @items.push(title)
       quantity -=1
     end
+    @last_transaction["title"] = title
+    @last_transaction["price"] = price
+    @last_transaction["quantity"] = quantity
   end
   
   def apply_discount
@@ -25,5 +29,6 @@ class CashRegister
   end
   
   def void_last_transaction
+    
   end
 end
