@@ -14,7 +14,6 @@ class CashRegister
       @items.push(title)
       quantity -=1
     end
-    @last_transaction["title"] = title
     @last_transaction["price"] = price
     @last_transaction["quantity"] = quantity
   end
@@ -29,6 +28,8 @@ class CashRegister
   end
   
   def void_last_transaction
-    
+    if @last_transaction["price"]
+      total -= @last_transaction["price"] * @last_transaction["quantity"]
+    end
   end
 end
